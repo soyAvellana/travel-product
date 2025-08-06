@@ -1,0 +1,251 @@
+import { useEffect, useState } from "react";
+
+
+import wanderorb from "./assets/img/wanderorb.png";
+import feature1 from "./assets/img/feature1.png";
+import feature2 from "./assets/img/feature2.png";
+import feature3 from "./assets/img/feature3.png";
+import lifestyle1 from "./assets/img/lifestyle1.png";
+import lifestyle2 from "./assets/img/lifestyle2.png";
+import lifestyle3 from "./assets/img/lifestyle3.png";
+import price1 from "./assets/img/price1.png";
+import price2 from "./assets/img/price2.png";
+import price3 from "./assets/img/price3.png";
+
+
+import avatar1 from "./assets/img/avatar1.png";
+import avatar2 from "./assets/img/avatar2.png";
+import avatar3 from "./assets/img/avatar3.png";
+
+
+export default function App() {
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    setEmail("");
+    setTimeout(() => setIsSubmitted(false), 3000);
+  };
+
+  return (
+    <div className="font-sans bg-white text-gray-900">
+    
+
+
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gray-50">
+        <img
+          src={wanderorb}
+          alt="WanderOrb"
+          className="w-80 h-80 object-contain drop-shadow-[0_0_25px_#00f7ff] mb-8"
+        />
+        <h1 className="text-6xl md:text-7xl font-bold mb-4">
+          Wander<span className="text-cyan-500">Orb</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          Dein intelligenter Reisebegleiter – holografische Navigation,
+          Echtzeit-Übersetzung und smarte Planung.
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 flex flex-col sm:flex-row gap-4"
+        >
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Deine E-Mail-Adresse"
+            className="px-6 py-4 rounded-full border border-gray-300 text-lg focus:outline-none focus:border-cyan-400"
+            required
+          />
+          <button className="px-8 py-4 rounded-full bg-cyan-500 text-white font-bold hover:bg-cyan-400 transition">
+            {isSubmitted ? "✓ Angemeldet!" : "Mehr erfahren"}
+          </button>
+          
+        </form>
+      </section>
+
+   
+      <section className="py-20 bg-white text-center">
+        <h2 className="text-4xl font-bold mb-12">Warum WanderOrb?</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+          {[
+            {
+              img: feature1,
+              title: "3D Hologramm",
+              desc: "Interaktive, freischwebende Karten mit Live-Daten.",
+            },
+            {
+              img: feature2,
+              title: "Echtzeit-Übersetzung",
+              desc: "Sprich und verstehe über 150 Sprachen sofort.",
+            },
+            {
+              img: feature3,
+              title: "KI-Planung",
+              desc: "Optimierte Routen je nach Wetter und Events.",
+            },
+          ].map((f, i) => (
+            <div
+              key={i}
+              className="bg-gray-50 p-8 rounded-3xl shadow-lg hover:shadow-cyan-500/20 transition"
+            >
+              <img
+                src={f.img}
+                alt={f.title}
+                className="w-24 h-24 mx-auto mb-6"
+              />
+              <h3 className="text-xl font-semibold mb-4">{f.title}</h3>
+              <p className="text-gray-600">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-50">
+<div className="carousel w-full max-w-xl rounded-box shadow-xl">
+  {[lifestyle1, lifestyle2, lifestyle3].map((img, i) => (
+    <div key={i} id={`slide${i}`} className="carousel-item relative w-full">
+      <img
+        src={img}
+        className="w-full h-96 object-cover rounded-box"
+        alt={`Lifestyle ${i + 1}`}
+      />
+      <div className="absolute flex justify-between transform -translate-y-1/2 left-4 right-4 top-1/2">
+        <a href={`#slide${(i + 2) % 3}`} className="btn btn-circle">❮</a>
+        <a href={`#slide${(i + 1) % 3}`} className="btn btn-circle">❯</a>
+      </div>
+    </div>
+  ))}
+
+    <div>
+      <h2 className="text-4xl font-bold mb-6">Immer dabei</h2>
+      <p className="text-gray-700 mb-4">
+        Ob in der Stadt, im Dschungel oder am Strand – WanderOrb ist dein
+        universeller Guide, der dir jederzeit den Weg weist.
+      </p>
+      <p className="text-gray-700">
+        Mit Solar- und Bewegungsladung bist du auch fernab der Zivilisation
+        bestens ausgerüstet.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+   
+      <section className="py-20 bg-white text-center">
+        <h2 className="text-4xl font-bold mb-12">Was unsere Kunden sagen</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+          {[
+            {
+              avatar: avatar1,
+              name: "Maria S.",
+              text: "Einfach genial – die holografische Karte hat mir in Marrakesch so oft den Weg gezeigt!",
+              rating: 5,
+            },
+            {
+              avatar: avatar2,
+              name: "Jonas K.",
+              text: "Ich habe damit in Japan so viel leichter kommuniziert – absolute Empfehlung!",
+              rating: 5,
+            },
+            {
+              avatar: avatar3,
+              name: "Lena P.",
+              text: "Der Akku hält ewig, und die automatische Routenplanung ist super smart.",
+              rating: 4,
+            },
+          ].map((t, i) => (
+            <div key={i} className="bg-gray-50 p-8 rounded-3xl shadow-lg">
+              <img
+                src={t.avatar}
+                alt={t.name}
+                className="w-16 h-16 mx-auto rounded-full mb-4 object-cover"
+              />
+              <div className="flex justify-center mb-4 text-yellow-400 text-lg">
+                {"★".repeat(t.rating)}
+                {"☆".repeat(5 - t.rating)}
+              </div>
+              <p className="text-gray-700 mb-4">"{t.text}"</p>
+              <span className="font-semibold">{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    
+      <section className="py-20 bg-gray-50 text-center">
+        <h2 className="text-4xl font-bold mb-12">Preise & Pakete</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+          {[
+            {
+              img: price1,
+              title: "Basic",
+              price: "299€",
+              features: [
+                "Hologramm-Navigation",
+                "Offline-Karten",
+                "Standard-Akku",
+              ],
+            },
+            {
+              img: price2,
+              title: "Pro",
+              price: "399€",
+              features: ["Alles aus Basic", "Echtzeit-Übersetzung", "KI-Planung"],
+            },
+            {
+              img: price3,
+              title: "Ultimate",
+              price: "499€",
+              features: [
+                "Alles aus Pro",
+                "Premium-Akku",
+                "Lebenslange Updates",
+              ],
+            },
+          ].map((p, i) => (
+            <div
+              key={i}
+              className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-cyan-500/20 transition"
+            >
+              <img
+                src={p.img}
+                alt={p.title}
+                className="mx-auto mb-6 max-h-48 object-contain"
+              />
+              <h3 className="text-2xl font-bold mb-4">{p.title}</h3>
+              <p className="text-4xl font-bold text-cyan-500 mb-6">{p.price}</p>
+              <ul className="text-gray-700 mb-6 space-y-2">
+                {p.features.map((f, idx) => (
+                  <li key={idx}>✓ {f}</li>
+                ))}
+              </ul>
+              <button className="px-6 py-3 bg-cyan-500 text-white rounded-full hover:bg-cyan-400 transition">
+                Jetzt bestellen
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+
+
+
+      <section className="py-20 bg-cyan-500 text-black text-center">
+        <h2 className="text-4xl font-bold mb-6">Bereit für dein Abenteuer?</h2>
+        <p className="mb-8 text-lg">
+          Melde dich jetzt an und sei einer der Ersten, die den WanderOrb
+          erhalten
+        </p>
+        <button className="px-10 py-4 bg-black text-white rounded-full font-bold hover:bg-gray-800 transition">
+          Jetzt vorbestellen
+        </button>
+      </section>
+    </div>
+
+    
+  );
+}
