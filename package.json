@@ -11,14 +11,14 @@
     "lucide-react": "^0.537.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "react-scripts": "^5.0.1",
+    "sharp": "^0.34.3",
     "tailwindcss": "^3.4.17"
   }
 }
